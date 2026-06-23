@@ -61,6 +61,8 @@ apps:
     daemon: simple
     environment:
       PATH: $SNAP/usr/bin:$SNAP/docker-snap/bin:$PATH
+      GIT_TEMPLATE_DIR: $SNAP/usr/share/git-core/templates
+      GIT_EXEC_PATH: $SNAP/usr/lib/git-core
     plugs:
       - network
       - docker
