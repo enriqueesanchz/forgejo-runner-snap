@@ -49,6 +49,10 @@ parts:
     source: snap/local/
     organize:
       default-config.yaml: .
+      forgejo-runner-wrapper: bin/forgejo-runner-wrapper
+    override-build: |
+      craftctl default
+      chmod +x "${SNAPCRAFT_PART_INSTALL}/forgejo-runner-wrapper"
 
 
 hooks:
@@ -57,7 +61,7 @@ hooks:
 
 apps:
   forgejo-runner:
-    command: bin/forgejo-runner daemon --config $SNAP_COMMON/forgejo-config.yaml
+    command: bin/forgejo-runner-wrapper
     daemon: simple
     environment:
       PATH: $SNAP/usr/bin:$SNAP/docker-snap/bin:$PATH

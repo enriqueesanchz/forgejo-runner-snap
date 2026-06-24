@@ -102,6 +102,22 @@ sudo snap restart forgejo-runner
 
 The default template comes from `snap/local/default-config.yaml`.
 
+## Proxy support
+
+If your environment requires HTTP/HTTPS proxies, set them via snap settings:
+
+```bash
+sudo snap set forgejo-runner \
+  proxy.http="http://proxy.example.com:3128" \
+  proxy.https="http://proxy.example.com:3128" \
+  proxy.no-proxy="localhost,127.0.0.1,.internal"
+```
+
+The proxy variables are applied in two places:
+
+1. **Runner daemon**: the daemon process itself inherits `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` (and their lowercase equivalents), so outbound connections to Forgejo and container registries go through the proxy.
+2. **CI job containers**: the same variables are written to the runner's `env_file` so that jobs spawned by Docker also get the proxy settings.
+
 ## Service management & logs
 
 ```bash
