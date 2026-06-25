@@ -1,10 +1,10 @@
-name: forgejo-runner
+name: forgejo-runner-vm
 title: Forgejo Runner
 base: core24
 version: 12.6.3
 summary: A daemon that connects to a Forgejo instance and runs jobs for CI.
-contact: diko.parvanov@canonical.com
-issues: https://github.com/dparv/forgejo-runner-snap/issues
+contact: enrique.sanchezcardoso@canonical.com
+issues: https://github.com/enriqueesanchz/forgejo-runner-snap/issues
 license: BSD-3-Clause
 source-code: https://code.forgejo.org/forgejo/runner
 website: https://forgejo.org/docs/next/admin/actions/#forgejo-runner
