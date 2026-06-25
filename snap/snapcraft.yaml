@@ -40,6 +40,10 @@ parts:
       cp -p "${SNAPCRAFT_PART_BUILD}/forgejo-runner" "${SNAPCRAFT_PART_INSTALL}/bin/"
     stage:
       - bin/forgejo-runner
+  git:
+    plugin: nil
+    stage-packages:
+      - git
   config:
     plugin: dump
     source: snap/local/
@@ -56,7 +60,9 @@ apps:
     command: bin/forgejo-runner daemon --config $SNAP_COMMON/forgejo-config.yaml
     daemon: simple
     environment:
-      PATH: $SNAP/docker-snap/bin:$PATH
+      PATH: $SNAP/usr/bin:$SNAP/docker-snap/bin:$PATH
+      GIT_TEMPLATE_DIR: $SNAP/usr/share/git-core/templates
+      GIT_EXEC_PATH: $SNAP/usr/lib/git-core
     plugs:
       - network
       - docker
