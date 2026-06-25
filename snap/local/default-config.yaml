@@ -3,9 +3,9 @@ log:
   job_level: info
 
 runner:
-  file: /var/snap/forgejo-runner/common/.runner
+  file: /var/snap/forgejo-runner-vm/common/.runner
   capacity: 1
-  env_file: /var/snap/forgejo-runner/common/.env
+  env_file: /var/snap/forgejo-runner-vm/common/.env
   timeout: 3h
   shutdown_timeout: 3h
   insecure: false
