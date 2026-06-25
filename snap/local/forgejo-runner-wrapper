@@ -1,0 +1,5 @@
+#!/bin/sh
+# Source proxy environment variables if configured via snap settings.
+[ -f "$SNAP_COMMON/proxy.env" ] && . "$SNAP_COMMON/proxy.env"
+
+exec "$SNAP/bin/forgejo-runner" daemon --config "$SNAP_COMMON/forgejo-config.yaml"
